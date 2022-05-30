@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  latex:
+    build: .
+    image: latex:0.1-bullseye
+    container_name: latex
+    restart: unless-stopped
+    volumes:
+      - ./workspace:/workspace
+      - $HOME/.ssh/authorized_keys:/home/latex/.ssh/authorized_keys:ro
+    ports:
+      - "2222:22"
